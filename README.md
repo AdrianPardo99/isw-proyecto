@@ -5,5 +5,5 @@
 ![Melani](https://github-readme-stats.vercel.app/api?username=Bestobetsa&theme=dracula&layout=compact)
 ![Adrian](https://github-readme-stats.vercel.app/api?username=AdrianPardo99&theme=vue-dark&layout=compact)
 ![Kevin](https://github-readme-stats.vercel.app/api?username=Kevin-Garcia-Martinez&theme=prussian&layout=compact)
-![Luis](https://github-readme-stats.vercel.app/api?username=LuisEnriqueHdz&theme=darcula&layout=compact)
-![Samuel](https://github-readme-stats.vercel.app/api?username=SamAlJuMa&theme=darcula&layout=compact)
+![Luis](https://github-readme-stats.vercel.app/api?username=LuisEnriqueHdz&theme=solarized-light&layout=compact)
+![Samuel](https://github-readme-stats.vercel.app/api?username=SamAlJuMa&theme=gotham&layout=compact)
