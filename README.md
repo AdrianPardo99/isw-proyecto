@@ -1,5 +1,5 @@
 # Repositorio de proyecto de reforestación
-
+- [X] Definición de Requerimientos
 ## Equipo de trabajo
 ![Brenda](https://github-readme-stats.vercel.app/api?username=marbrehi&theme=buefy&layout=compact)
 ![Melani](https://github-readme-stats.vercel.app/api?username=Bestobetsa&theme=dracula&layout=compact)
