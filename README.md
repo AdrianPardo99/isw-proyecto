@@ -10,6 +10,9 @@
 - [ ]  Definición de formatos de solicitudes al sistema
 - [ ]  Por definir (otros)
 
+### Documentos del Sprint 0
+* [Link del levantamiento de requerimientos](documentos/Requerimientos.pdf)
+
 ## Equipo de trabajo
 ![Brenda](https://github-readme-stats.vercel.app/api?username=marbrehi&theme=buefy&layout=compact)
 ![Melani](https://github-readme-stats.vercel.app/api?username=Bestobetsa&theme=dracula&layout=compact)
