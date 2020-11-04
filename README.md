@@ -1,6 +1,6 @@
 # Repositorio de proyecto de reforestación
 
-## Aactividades del Sprint 0
+## Actividades del Sprint 0
 - [ ] Definición del nombre del equipo
 - [X] Definición de Requerimientos
 - [ ] Diseño de Mockups
