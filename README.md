@@ -1,14 +1,14 @@
 # Repositorio de proyecto de reforestación
 
 ## Actividades del Sprint 0
-- [ ] Definición del nombre del equipo
-- [X] Definición de Requerimientos
-- [ ] Diseño de Mockups
-- [ ] Definición del lenguaje
-- [ ] Levantar página del sitio
-- [ ] Elección de la fuente de información
-- [ ] Definición de formatos de solicitudes al sistema
-- [ ] Por definir
+- [ ]  Definición del nombre del equipo
+- [X]  Definición de Requerimientos
+- [ ]  Diseño de Mockups
+- [X]  Definición del lenguaje (Python / Django)
+- [X]  Levantar página del sitio
+- [ ]  Elección de la fuente de información
+- [ ]  Definición de formatos de solicitudes al sistema
+- [ ]  Por definir (otros)
 
 ## Equipo de trabajo
 ![Brenda](https://github-readme-stats.vercel.app/api?username=marbrehi&theme=buefy&layout=compact)
