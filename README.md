@@ -7,7 +7,7 @@
 - [X]  Definición del lenguaje (Python / Django)
 - [X]  Levantar página del sitio
 - [ ]  Elección de la fuente de información
-- [ ]  Definición de formatos de solicitudes al sistema
+- [X]  Definición de formatos de solicitudes al sistema
 - [ ]  Por definir (otros)
 
 ### Documentos del Sprint 0
