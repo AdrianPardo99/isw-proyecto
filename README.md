@@ -13,6 +13,9 @@
 
 ### Documentos del Sprint 0
 * [Link del levantamiento de requerimientos](documentos/Requerimientos.pdf)
+* [Link de Modelo de BD para el proyecto](documentos/modelo-bd-arbolado.pdf)
+* [Link de diseño de mockups de las UI y sistema](documentos/mock_ups.pdf)
+
 
 ## Equipo de trabajo
 ![Brenda](https://github-readme-stats.vercel.app/api?username=marbrehi&theme=buefy&layout=compact)
