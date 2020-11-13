@@ -3,11 +3,12 @@
 ## Actividades del Sprint 0
 - [ ]  Definición del nombre del equipo
 - [X]  Definición de Requerimientos
-- [ ]  Diseño de Mockups
+- [X]  Diseño de Mockups
 - [X]  Definición del lenguaje (Python / Django)
 - [X]  Levantar página del sitio
-- [ ]  Elección de la fuente de información
+- [X]  Elección de la fuente de información
 - [X]  Definición de formatos de solicitudes al sistema
+- [X]  Modelo de datos de la fuente de información
 - [ ]  Por definir (otros)
 
 ### Documentos del Sprint 0
