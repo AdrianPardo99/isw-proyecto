@@ -15,7 +15,8 @@
 * [Link del levantamiento de requerimientos](documentos/Requerimientos.pdf)
 * [Link de Modelo de BD para el proyecto](documentos/modelo-bd-arbolado.pdf)
 * [Link de diseño de mockups de las UI y sistema](documentos/mock_ups.pdf)
-
+* [Link de Modelo de BD para el proyecto versión 2](documentos/modelo-bd-arbolado-2.pdf)
+* [Link de diseño de mockups de las UI y sistema final](documentos/mock_ups_final.pdf)
 
 ## Equipo de trabajo
 ![Brenda](https://github-readme-stats.vercel.app/api?username=marbrehi&theme=buefy&layout=compact)
