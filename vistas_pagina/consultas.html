@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Consultas CDMX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav class="row col s12 l12 m12">
+        <div class="col s12 l12 m12 nav-wrapper grey darken-1">
+          <a href="#" class="brand-logo center"><img src="nombre.png"> </a>
+          <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="nav nav-justified right hide-on-med-and-down">
+            <li><a href="#" class="btn waves-effect waves-light light-blue darken-4 pulse"><i class="tiny material-icons">home</i></a></li>
+            <li><a href="#" class="btn waves-effect waves-light light-blue darken-4 pulse"><i class="tiny material-icons">info</i></a></li>
+            <li><a href="#" class="btn waves-effect waves-light light-blue darken-4 pulse"><i class="tiny material-icons">create</i></a></li>
+            <li><a href="#" class="btn waves-effect waves-light light-blue darken-4 pulse"><i class="tiny material-icons">report_problem</i></a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="#" class="pulse">Home page<i class="tiny material-icons">home</i></a></li>
+        <li><a href="#" class="pulse">Information<i class="tiny material-icons">info</i></a></li>
+        <li><a href="#" class="pulse">Create a report<i class="tiny material-icons">create</i></a></li>
+        <li><a href="#" class="pulse">Report a problem<i class="tiny material-icons">report_problem</i></a></li>
+      </ul>
+    </header>
+    <div class="row">
+      <div class="col s2 l2 m2"></div>
+      <div class="col s8 l8 m8">
+        <center><h3><i class="material-icons">search</i>Consultas<i class="material-icons">search</i></h3></center>
+        <br><br><br>
+        <center>
+          <h5>Alcald&iacutea</h5>
+          <div class="input-field">
+            <select>
+              <option value="" disabled selected>Selecciona una alcald&iacutea</option>
+              <option value="0">Alcald&iacute 1</option>
+              <option value="1">Alcald&iacute 2</option>
+              <option value="2">Alcald&iacute 3</option>
+            </select>
+          </div>
+        </center>
+        <center>
+          <h5>Tipo de ubicaci&oacuten</h5>
+          <div class="input-field">
+            <select>
+              <option value="" disabled selected>Selecciona un tipo de ubicaci&oacuten</option>
+              <option value="0">Tipo 1</option>
+              <option value="1">Tipo 2</option>
+              <option value="2">Tipo 3</option>
+            </select>
+          </div>
+        </center>
+        <div class="col s4 l4 m4"></div>
+        <div class="col s8 l8 m8"><a href="" class="btn waves-effect waves-light light-blue darken-4 pulse right">Lista de datos</a></div>
+        <br><br>
+        <table class="highlight centered">
+          <thead>
+            <tr>
+              <th>Especie</th>
+              <th>Estado de conservaci&oacuten</th>
+              <th>Cantidad</th>
+              <th>Ver m&aacutes</th>
+            </tr>
+          </thead>
+          <thbody>
+            <tr>
+              <td>Especie 1</td>
+              <td>Estado 1</td>
+              <td>M especimenes</td>
+              <td><a href="#" class="waves-effect waves-light btn-floating light-blue darken-4 pulse"><i class="material-icons">remove_red_eye</i></a></td>
+            </tr>
+          </thbody>
+        </table>
+      </div>
+      <div class="col s2 l2 m2"></div>
+    </div>
+    <script>
+        $(document).ready(function(){
+          $('.sidenav').sidenav();
+          $('select').formSelect();
+        });
+    </script>
+  </body>
+</html>
