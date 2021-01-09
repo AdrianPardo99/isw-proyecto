@@ -1,0 +1,24 @@
+<!-- Heredamos todo lo que van a tener en común todos nuestros templates -->
+{% extends "base.html" %}
+<!-- Cargamos nuestros archivos estáticos que se encuentran en la carpeta 'statics' -->
+{% load  static %}
+
+{% block css %}
+<!-- Estilos CSS para la aplicación Arbolado -->
+    <link rel="stylesheet" href="{% static 'css/arbolado.css' %}">
+{% endblock css %}
+    
+{% block js %}
+<!-- Archivos JavaScript para la aplicación Arbolado -->
+    <script src="{% static 'js/arbolado.js' %}"></script>
+    <script>
+        document.querySelector('#btnAddTree').addEventListener('click', () => {
+            myModule.newTree();            
+        });
+
+        document.querySelector('#btnEnviar').addEventListener('click', () => {
+            myModule.newSection();            
+        });
+        
+    </script>
+{% endblock js %}

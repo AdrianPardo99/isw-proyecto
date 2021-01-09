@@ -1,0 +1,5 @@
+# git ignore
+Proyecto_Arbolado/applications/users/migrations/*
+Proyecto_Arbolado/applications/home/migrations/*
+Proyecto_Arbolado/applications/arbolado/migrations/*
+Proyecto_Arbolado/applications/solicitudes/migrations/*

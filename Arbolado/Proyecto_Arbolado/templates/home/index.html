@@ -1,0 +1,30 @@
+{% extends "home/base_home.html" %}
+
+{% load  static %}
+
+{% block content %}
+
+    {% include 'includes/header.html' %}
+   
+    <div class="grid-container">
+        <!-- primer bloque del home -->
+        <div class="grid-x grid-margin-x" style="margin-top: 1em;">
+            <!-- bloque de blog principal -->
+            <div class="cell small-12 large-6">
+                <div class="card" style="width: 100%;">
+                    <img src="{{ home.image.url }}">
+                    <div class="card-section">
+                      <h4> {{ home.title }}  </h4>
+                       <p> {{ home.about_text }} </p>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN bloque de blog principal -->
+        </div>
+        <!-- FIN del primer bloque home -->
+    </div>
+
+
+    {% include "includes/footer.html" %}
+
+{% endblock content %}

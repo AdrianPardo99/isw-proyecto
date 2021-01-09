@@ -1,0 +1,57 @@
+{% load static %}
+<header>
+  <div class="multilevel-offcanvas off-canvas position-right" id="offCanvasRight" data-off-canvas>
+    <ul class="vertical menu" data-accordion-menu>
+      <li><a href="#"> SOLICITUDES </a>
+        <ul class="menu vertical nested">
+          <li><a href="{% url 'solicitudes_app:solicitudes_registro' %}"> Solicitud Registro Arbolado  </a></li>
+          <li><a href="#"> Solicitud Registro Indicente </a></li>
+         </ul>
+      </li>
+      <li><a href="#">PRODUCTS</a>
+        <ul class="menu vertical nested">
+          <li><a href="#">Product 1</a></li>
+          <li><a href="#">Product 2</a></li>
+          <li><a href="#">Product 3</a></li>
+         </ul>
+       </li>
+      <li><a href="#">CITIES</a>
+        <ul class="menu vertical nested">
+          <li><a href="#">London</a></li>
+          <li><a href="#">New York</a></li>
+          <li><a href="#">Paris</a></li>
+         </ul>
+      </li>
+     </ul>
+    <ul class="vertical menu">
+       <li><a href="#">Journal</a></li>
+       <li><a href="#">FAQ</a></li>
+       <li><a href="#">Terms & Conditions</a></li>
+       <li><a href="#">Careers</a></li>
+       <li><a href="#">Students</a></li>
+    </ul>
+    
+  </div>
+  
+  <div class="off-canvas-content" data-off-canvas-content>
+    <div class="nav-bar">
+        <div class="nav-bar-left">
+          <a class="nav-bar-logo" href="{% url 'home_app:index' %}"> <img class="logo" src="{% static 'img/logo.png' %}""> </a>
+        </div>
+        <div class="nav-bar-right">
+          <button class="offcanvas-trigger" type="button" data-open="offCanvasRight">
+            <span class="offcanvas-trigger-text hide-for-small-only"> Menu </span>
+            <div class="hamburger">
+              <span class="line"></span>
+              <span class="line"></span>
+              <span class="line"></span>
+            </div>
+          </button>
+      </div>
+    </div>
+  </div>
+
+</header>  
+  
+
+

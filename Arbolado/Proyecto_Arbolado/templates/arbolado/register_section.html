@@ -1,0 +1,112 @@
+{% extends "arbolado/base_arbolado.html" %}
+
+{% load  static %}
+
+{% block content %}
+
+    {% include 'includes/header.html' %} 
+    <!-- Init Grid Container -->
+    <div class="grid-container ">
+        <div class="grid-x grid-margin-x">
+            <h3 class="cell title"> Registro de una Sección de Arbolado </h3>
+            <!-- Inicio Bloque Ubicación -->
+            <form id="formSection" method="POST" autocomplete="off" class="cell large-6"> {% csrf_token %}
+                    <h4 class="cell subtitle"> Ubicación </h4>
+                    
+                    <div class="cell large-12">
+                        <label class="text"> Nombre de la Ubicación:
+                            {{ form.location }}
+                        </label>
+                    </div>
+
+                    <div class="cell large-12">
+                        <label class="text"> Dirección:
+                            {{ form.address }}
+                        </label>
+                    </div>
+
+                    <div class="cell large-12">
+                        <label class="text"> Alcaldía:
+                            {{ form.town }}
+                        </label>
+                    </div>
+            </form>
+            <!-- Fin Bloque Ubicación -->
+
+            <!-- Inicio Bloque Datos Árbol -->
+                <form id="formTree" method="POST" autocomplete="off" class="cell large-6"> {% csrf_token %}
+                        <h4 class="cell subtitle"> Agregar Árbol </h4>
+
+                        <div class="cell large-12">
+                            <label class="text"> Nombre:
+                                {{ form_tree.name }}
+                            </label>
+                        </div>
+                        
+                        <div class="cell large-12">
+                            <label class="text"> Especie:
+                                {{ form_tree.species }}
+                            </label>
+                        </div>
+    
+                        <div class="cell large-12">
+                            <label class="text"> Descripción:
+                                {{ form_tree.description }}
+                            </label>
+                        </div>
+    
+                        <div class="cell large-12">
+                            <label class="text"> Fotografía: </label>
+                            {{ form_tree.image }}
+                        </div>
+    
+                        <div class="cell large-12">
+                            <label class="text"> Estado de Conservación: 
+                                {{ form_tree.status }}
+                            </label>
+                            
+                        </div>
+                        <!-- Foundation Block: 12 columns -->
+                        <div class="cell grid-x grid-margin-x">
+                            <div class="cell large-6">
+                                <label class="text"> Cantidad:
+                                    {{ form_tree.amount }}
+                                </label>
+                            </div>
+                            <div class="cell large-6" style="text-align: right;">
+                                <br>
+                                <img id="btnAddTree" height="40px" width="40px" style="cursor: pointer;" src="{% static 'img/add.png' %}">
+                            </div>
+                        </div>   
+                </form>
+            <!-- Fin Bloque Datos Árbol -->
+        </div>
+
+        <div class="cell">
+            <table id="table-tree" style="margin-top: 20px;">
+                <thead style="background: #81BDA4; color:azure;">
+                  <tr>
+                    <th style="text-align: center;"> Nombre      </th>
+                    <th style="text-align: center;"> Especie     </th>
+                    <th style="text-align: center;"> Descripción </th>
+                    <th style="text-align: center;"> Estado Conservación </th>
+                    <th style="text-align: center;"> Cantidad </th>
+                    <th style="text-align: center;"> Acción   </th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyTable" style="text-align: center;">
+                </tbody>
+              </table>
+        </div>
+
+        <div class="cell" style="text-align: right;">
+            <button style="background-color: #81BDA4;" class="button" id="btnEnviar"> Enviar Solicitud </button>
+        </div>
+
+    </div>
+    <!-- End Grid Container -->
+
+   <!-- {% include "includes/footer.html" %} -->
+
+{% endblock content %}
+    
