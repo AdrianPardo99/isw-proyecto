@@ -15,7 +15,13 @@
                     
                     <div class="cell large-12">
                         <label class="text"> Nombre de la Ubicación:
-                            {{ form.location }}
+                            {{ form.location_name }}
+                        </label>
+                    </div>
+
+                    <div class="cell large-12">
+                        <label class="text"> Tipo de Ubicación:
+                            {{ form.location_type }}
                         </label>
                     </div>
 
@@ -36,12 +42,6 @@
             <!-- Inicio Bloque Datos Árbol -->
                 <form id="formTree" method="POST" autocomplete="off" class="cell large-6"> {% csrf_token %}
                         <h4 class="cell subtitle"> Agregar Árbol </h4>
-
-                        <div class="cell large-12">
-                            <label class="text"> Nombre:
-                                {{ form_tree.name }}
-                            </label>
-                        </div>
                         
                         <div class="cell large-12">
                             <label class="text"> Especie:
@@ -86,7 +86,6 @@
             <table id="table-tree" style="margin-top: 20px;">
                 <thead style="background: #81BDA4; color:azure;">
                   <tr>
-                    <th style="text-align: center;"> Nombre      </th>
                     <th style="text-align: center;"> Especie     </th>
                     <th style="text-align: center;"> Descripción </th>
                     <th style="text-align: center;"> Estado Conservación </th>

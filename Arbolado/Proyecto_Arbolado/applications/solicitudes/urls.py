@@ -6,7 +6,7 @@ app_name = "solicitudes_app"
 
 urlpatterns = [
     path(
-        'solicitudes/register/section', 
+        'solicitudes/register/section/report', 
         views.SolicitudeRegisterView.as_view(),
         name='solicitudes_registro',
     ), 

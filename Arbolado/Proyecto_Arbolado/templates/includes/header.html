@@ -2,19 +2,17 @@
 <header>
   <div class="multilevel-offcanvas off-canvas position-right" id="offCanvasRight" data-off-canvas>
     <ul class="vertical menu" data-accordion-menu>
+      <li><a href="#"> ALCALDÍAS </a>
+        <ul class="menu vertical nested">
+          <li><a href="{% url 'arbolado_app:arbolado_alcaldias' %}"> Consultar Secciones Arbolado </a></li>
+         </ul>
+      </li>
       <li><a href="#"> SOLICITUDES </a>
         <ul class="menu vertical nested">
           <li><a href="{% url 'solicitudes_app:solicitudes_registro' %}"> Solicitud Registro Arbolado  </a></li>
           <li><a href="#"> Solicitud Registro Indicente </a></li>
          </ul>
       </li>
-      <li><a href="#">PRODUCTS</a>
-        <ul class="menu vertical nested">
-          <li><a href="#">Product 1</a></li>
-          <li><a href="#">Product 2</a></li>
-          <li><a href="#">Product 3</a></li>
-         </ul>
-       </li>
       <li><a href="#">CITIES</a>
         <ul class="menu vertical nested">
           <li><a href="#">London</a></li>

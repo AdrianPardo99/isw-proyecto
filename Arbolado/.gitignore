@@ -1,5 +1,9 @@
 # git ignore
 Proyecto_Arbolado/applications/users/migrations/*
+Proyecto_Arbolado/applications/users/migrations/__init__.py
 Proyecto_Arbolado/applications/home/migrations/*
+Proyecto_Arbolado/applications/home/migrations/__init__.py
 Proyecto_Arbolado/applications/arbolado/migrations/*
+Proyecto_Arbolado/applications/arbolado/migrations/__init__.py
 Proyecto_Arbolado/applications/solicitudes/migrations/*
+Proyecto_Arbolado/applications/solicitudes/migrations/__init__.py

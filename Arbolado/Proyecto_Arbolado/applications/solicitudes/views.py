@@ -7,8 +7,10 @@ from django.http import JsonResponse
 from django.views.generic import (
     CreateView,
 )
-# Django Models
+# Django Local Models
 from .models import SolicitudeRegister, Solicitude
+# Django Local Forms
+from .forms import SolicitudeRegisterForm
 # External Application Forms
 from applications.arbolado.forms import SectionForm, TreeForm
 # Extra Funcions
@@ -17,13 +19,10 @@ from .utils import code_generator
 
 class SolicitudeRegisterView( CreateView ):
     model = SolicitudeRegister
-    template_name = 'solicitudes/register_section.html'
-    fields = (
-        'full_name',
-        'email',
-        'age',
-        'section'
-    )
+    # Reloading the Main Page
+    success_url = '/'
+    template_name = 'solicitudes/register_section_report.html'
+    form_class    = SolicitudeRegisterForm
 
     def get_context_data(self, **kwargs):
         context = super(SolicitudeRegisterView, self).get_context_data(**kwargs)
@@ -32,6 +31,12 @@ class SolicitudeRegisterView( CreateView ):
         # Sending the SectionForm to the HTML template
         context["form_section"] = SectionForm
         return context
+
+    def form_invalid(self, form, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['form'] = form
+        print( f'Formulario inválido: { form.cleaned_data } ')
+        return self.render_to_response( context )
 
     def form_valid(self, form):
         if self.request.is_ajax():
@@ -78,6 +83,7 @@ class SolicitudeRegisterView( CreateView ):
 
             return JsonResponse( data, status = 200 )
         else:
+            print("No soy ajax")
             return super(SolicitudeRegisterView, self).form_valid( form )
 
     

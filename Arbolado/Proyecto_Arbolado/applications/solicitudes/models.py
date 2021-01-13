@@ -11,12 +11,12 @@ class Person(models.Model):
 
     email = models.EmailField(
         'Email', 
-        unique = True 
+        unique = False 
     )
 
     age = models.PositiveIntegerField(
         'Age',
-        default = 0
+        default = 0,
     )
 
     class Meta:
@@ -58,11 +58,12 @@ class Solicitude( models.Model ):
     )
 
     class Meta:
-        verbose_name = 'Request'
-        verbose_name_plural = 'Requests'
-
+        verbose_name = 'Request Information'
+        verbose_name_plural = 'Requests Information'
+    
+    # Access to the real value of choices type field: .get_ChoicesAttributeName_display()
     def __str__(self):
-        return str( self.expedition_date )
+        return str( self.expedition_date ) + ': ' + self.get_category_display() + ' Arbolado'
 
 
 class SolicitudeRegister( Person ):
@@ -88,6 +89,6 @@ class SolicitudeRegister( Person ):
         verbose_name_plural = 'Register Requests'
 
     def __str__(self):
-        return str( self.solicitude.expedition_date )
+        return str( self.solicitude_code) + ': Expedida el ' + str( self.solicitude.expedition_date )
 
 

@@ -1,0 +1,49 @@
+{% extends "arbolado/base_arbolado.html" %}
+
+{% load  static %}
+
+{% block content %} 
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <!-- Foundation Block: 12 columns with margin between them -->
+        <div class="grid-x grid-margin-x">
+            <h3 class="cell title" style="margin-bottom: 40px;"> Consulta de Secciones de Arbolado </h3>
+            <!-- Inicio Bloque Secciones -->
+            <div class="cell large-8">
+                <form class="input-group" method="GET"> {% csrf_token %}
+                    <input class="input-group-field" autocomplete="off" type="text" id="kword" name="kword" placeholder="Buscar Sección Arbolado ...">
+                    <div class="input-group-button">
+                      <input type="submit" class="button" value="Buscar" style="background-color: #81BDA4;">
+                    </div>
+                </form>
+
+                {% for section in sections  %}
+                     
+                    <div class="callout success">
+                        <h5 class="title"> {{ section.location_name }} </h5>
+                        <p style="color: tomato; font-weight: bold; font-family:Verdana, Geneva, Tahoma, sans-serif;" > Dirección: {{ section.address }}  </p>
+                        <p style="color: tomato; font-weight: bold; font-family:Verdana, Geneva, Tahoma, sans-serif;" > Tipo Ubicación: {{ section.location_type.name }}  </p>
+                        <p style="color: tomato; font-weight: bold; font-family:Verdana, Geneva, Tahoma, sans-serif;" > Total de Especies Árboles Registrados: {{ section.trees.all.count }}  </p>
+                        <div style="text-align: right;">
+                            <a href="#" style="color: #81BDA4; font-weight: bold;"> Ver más... </a>
+                        </div>
+                    </div>
+                {% empty %}
+                <h3 style="color:mediumseagreen"> No hay secciones registradas ... </h3>
+                {% endfor %}
+            </div>
+            <div class="cell small-2 large-offset-1">
+                <h4 class="subtitle"> Ubicación: </h4>
+                <ul class="vertical menu">
+                    {% for location in locations %}
+                        <!-- This parameter is sending in the url by GET Method -->
+                        <li> 
+                            <a href="?location={{ location.name }}" style="color: #81BDA4; font-weight: bold;"> - {{ location.name }} </a> 
+                        </li>    
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Fin Bloque Secciones -->
+        </div>
+    </div>
+{% endblock content %}

@@ -79,7 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # Procesos hechos por nosotros
+                # Procesos hechos por nosotros, se debe de comentar antes de ejecutar el proyecto
                 'applications.processors.home_contact'
             ],
         },

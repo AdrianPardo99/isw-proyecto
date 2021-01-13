@@ -12,12 +12,14 @@ class SectionForm(forms.ModelForm):
         queryset = Town.objects.all(),
         empty_label = "Selecciona una...",
     ) # ChoiceField bonded to Town model
-
+    
+    # The fields that are not specified in this section won´t be registered in the Database
     class Meta:
         model = Section
         fields = (
             'trees',
-            'location',
+            'location_name',
+            'location_type',
             'address',
             'town'
         )
@@ -42,11 +44,20 @@ class TreeForm(forms.ModelForm):
         )
     )
 
+    amount = forms.IntegerField(
+        required = True,
+        min_value = 1,
+        widget = forms.NumberInput(
+            attrs={
+                'value': '1'
+            }
+        )
+    ) 
+
     class Meta:
         model = Tree
-        # Or fields('__all__')
+        # Or fields = ('__all__')
         fields = (
-            'name',
             'species',
             'description',
             'image',

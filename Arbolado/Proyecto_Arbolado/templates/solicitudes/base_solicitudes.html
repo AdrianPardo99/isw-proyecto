@@ -19,5 +19,13 @@
         document.querySelector('#btnEnviar').addEventListener('click', () => {
             myModule.newSection();            
         });
+
+        const deleteRow = ( obj ) => {
+            /* img -> td -> tr */
+            let id_row  = obj.parentNode.parentNode.rowIndex;
+            let id_tree = obj.id;
+            myModule.deleteTree( id_row, id_tree);
+        }
+        
     </script>
 {% endblock js %}

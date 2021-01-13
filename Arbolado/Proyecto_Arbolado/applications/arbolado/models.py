@@ -1,5 +1,7 @@
 # Django modules
 from django.db import models
+# Local Managers
+from .managers import SectionManager
 # Third Party Apps
 from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -9,6 +11,11 @@ class Town(models.Model):
     name = models.CharField(
         'Town name',
          max_length = 30
+    )
+
+    image = models.ImageField(
+        'Image', 
+        upload_to ='Towns', 
     )
 
     def __str__(self):
@@ -29,6 +36,21 @@ class Species(models.Model):
     def __str__(self):
         return self.name 
 
+# Modelo Ubicación
+class Location(models.Model):
+    
+    name = models.CharField(
+        'Location name',
+         max_length = 50
+    )
+
+    class Meta:
+        verbose_name = 'Location'
+        verbose_name_plural = 'Locations'
+
+    def __str__(self):
+        return self.name 
+
 # Modelo Árbol
 class Tree(models.Model):
 
@@ -38,11 +60,6 @@ class Tree(models.Model):
         ( '2', 'Declinante Incipiente' ),
         ( '3', 'Declinante Severo' ),
         ( '4', 'Muerto' )
-    )
-    
-    name = models.CharField(
-        'Tree name',
-         max_length = 50
     )
     
     # Foreignkey from 'Species' model
@@ -56,7 +73,7 @@ class Tree(models.Model):
     
     image = models.ImageField(
         'Image', 
-        upload_to='Trees', 
+        upload_to ='Trees', 
     )
 
     status = models.CharField(
@@ -65,28 +82,34 @@ class Tree(models.Model):
         choices = STATUS_CHOICES
     )
 
-    amount = models.PositiveIntegerField(
-        'Amount',
-        default = 0
-    ) 
-
+    amount = models.PositiveIntegerField('Amount') 
+    
     class Meta:
         verbose_name = 'Tree'
         verbose_name_plural = 'Trees'
 
     def __str__(self):
-        return self.name + ': ' + str(self.amount)
+        return str(self.id) + ': ' + self.species.name 
 
 # Modelo Sección
 class Section(models.Model):
-     
+
+    # Trees registered in the section  
     trees = models.ManyToManyField( Tree )
 
-    location = models.CharField(
+    # Location name
+    location_name = models.CharField(
         'Location',
          max_length = 60
     )
 
+    # Foreignkey from 'Location' model
+    location_type = models.ForeignKey(
+        Location, 
+        on_delete = models.CASCADE
+    )
+
+    # Address provided by Google Maps
     address = models.CharField(
         'Address',
          max_length = 120
@@ -101,8 +124,12 @@ class Section(models.Model):
     # Foreignkey from 'Town' model
     town = models.ForeignKey(
         Town, 
-        on_delete=models.CASCADE
+        on_delete = models.CASCADE
     )
 
+    # Linking the Manager with the model 
+    objects = SectionManager()
+
     def __str__(self):
-        return self.location + ': ' + self.town.name
+        return self.town.name + ': ' + self.location_name
+

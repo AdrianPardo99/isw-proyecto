@@ -14,6 +14,7 @@ class HomePageView(TemplateView):
     # Sending all the data of the DB to HTML template
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
+        # Es necesario comentar esta línea de código
         context["home"] = Home.objects.latest('created')
         return context
     

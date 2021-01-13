@@ -1,0 +1,26 @@
+{% extends "arbolado/base_arbolado.html" %}
+
+{% load  static %}
+
+{% block content %} 
+    {% include 'includes/header.html' %}
+    <!-- Init Grid Container -->
+    <div class="grid-container">
+        <!-- Foundation Block: 12 columns with margin between them -->
+        <div class="grid-x grid-margin-y grid-margin-x">
+            <h3 class="cell title"> Secciones de Arbolado por Alcaldías </h3>
+            {% for town in towns  %}
+            <div class="cell large-4 container">
+                    <img class="image" src="{{ town.image.url }}">
+                <div class="overlay">
+                  <div class="txt">
+                    <a href="{% url 'arbolado_app:arbolado_sections' town.name %}" style="color: white;"> {{ town.name }} </a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- End Grid Container -->
+{% endblock content %}
+    

@@ -16,5 +16,22 @@ urlpatterns = [
         views.TreeCreateView,
         name = 'register_tree',
     ), 
-    
+
+    path(
+        'arbolado/delete/tree',
+        views.TreeDeleteView,
+        name = 'delete_tree',
+    ),
+
+    path(
+        'arbolado/alcaldias/',
+        views.TownListView.as_view(),
+        name = 'arbolado_alcaldias',
+    ),
+
+    path(
+        'arbolado/alcaldias/sections/<name>',
+        views.ListSectionsByTown.as_view(),
+        name = 'arbolado_sections'
+    ),
 ]
