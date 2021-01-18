@@ -100,6 +100,9 @@ Para finalizar esto lo que haremos es:
 ```bash
   python manage.py makemigrations
   python manage.py migrate
+  # En caso de mandar errores evitar el migrate y escribir las siguientes dos lineas
+  python manage.py migrate auth
+  python manage.py migrate --run-syncdb
 ```
 De modo en que ya tendremos listo casi todo para visualizar la aplicación, después crearemos el superusuario para la aplicación con:
 ```bash
@@ -119,3 +122,12 @@ Con esto tendremos que regresar a los dos archivos que modificamos y regresarlos
 ```bash
   python manage.py runserver
 ```
+__Nota:__ Es indispensable tener la BD en postgres vacia por lo que si esta trabajando con una versión anterior o algun estilo, podemos hacer lo siguiente para eliminar la base de datos:
+```sql
+  # Primero detener todo lo que pueda consumir la DB
+  # Caso windows o algo parecido
+  drop database arboladodb
+  # Caso Unix
+  dropdb arboladodb
+```
+Y volver a crear
