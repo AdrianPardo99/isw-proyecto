@@ -7,29 +7,32 @@
     <div class="grid-container">
         <!-- Foundation Block: 12 columns with margin between them -->
         <div class="grid-x grid-margin-x">
-            <h3 class="cell title" style="margin-bottom: 40px;"> Consulta de Secciones de Arbolado </h3>
+            
+            <div class="cell large-8 large-offset-2 rectangle-green" style="margin-bottom: 30px;">
+                <p> Consultas de Secciones de Arbolado </p>
+            </div>
+
             <!-- Inicio Bloque Secciones -->
             <div class="cell large-8">
                 <form class="input-group" method="GET"> {% csrf_token %}
-                    <input class="input-group-field" autocomplete="off" type="text" id="kword" name="kword" placeholder="Buscar Sección Arbolado ...">
+                    <input class="text input-group-field" autocomplete="off" type="text" id="kword" name="kword" placeholder="Buscar Sección Arbolado ...">
                     <div class="input-group-button">
-                      <input type="submit" class="button" value="Buscar" style="background-color: #81BDA4;">
+                      <input type="submit" class="button search-button-green" value="Buscar">
                     </div>
                 </form>
 
                 {% for section in sections  %}
-                     
                     <div class="callout success">
-                        <h5 class="title"> {{ section.location_name }} </h5>
-                        <p style="color: tomato; font-weight: bold; font-family:Verdana, Geneva, Tahoma, sans-serif;" > Dirección: {{ section.address }}  </p>
-                        <p style="color: tomato; font-weight: bold; font-family:Verdana, Geneva, Tahoma, sans-serif;" > Tipo Ubicación: {{ section.location_type.name }}  </p>
-                        <p style="color: tomato; font-weight: bold; font-family:Verdana, Geneva, Tahoma, sans-serif;" > Total de Especies Árboles Registrados: {{ section.trees.all.count }}  </p>
+                        <p class="card-title"> {{ section.location_name }} </p>
+                        <p class="card-text"> <span> Dirección: </span> {{ section.address }}  </p>
+                        <p class="card-text"> <span> Tipo Ubicación: </span> {{ section.location_type.name }}  </p>
+                        <p class="card-text"> <span> Total de Especies Árboles Registrados: </span> {{ section.trees.all.count }}  </p>
                         <div style="text-align: right;">
-                            <a href="#" style="color: #81BDA4; font-weight: bold;"> Ver más... </a>
+                            <a href="{% url 'arbolado_app:arbolado_section_detail' section.id %}" class="link-green"> Ver más... </a>
                         </div>
                     </div>
                 {% empty %}
-                <h3 style="color:mediumseagreen"> No hay secciones registradas ... </h3>
+                <h3 class="sub-title"> No hay secciones registradas ... </h3>
                 {% endfor %}
             </div>
             <div class="cell small-2 large-offset-1">
@@ -38,7 +41,7 @@
                     {% for location in locations %}
                         <!-- This parameter is sending in the url by GET Method -->
                         <li> 
-                            <a href="?location={{ location.name }}" style="color: #81BDA4; font-weight: bold;"> - {{ location.name }} </a> 
+                            <a href="?location={{ location.name }}" class="link-green"> - {{ location.name }} </a> 
                         </li>    
                     {% endfor %}
                 </ul>

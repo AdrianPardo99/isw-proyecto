@@ -1,6 +1,12 @@
 from django.db import models
 # External model application
-from applications.arbolado.models import Section
+from applications.arbolado.models import Section, Town
+# Third Party Apps
+from ckeditor_uploader.fields import RichTextUploadingField
+# Local Maganagers
+from .managers import SolicitudeManager
+
+
 
 class Person(models.Model):
     
@@ -84,11 +90,69 @@ class SolicitudeRegister( Person ):
         default = '000000'
     )
 
+    # Linking the Manager with the model 
+    objects = SolicitudeManager()
+
     class Meta:
         verbose_name = 'Register Request'
         verbose_name_plural = 'Register Requests'
 
     def __str__(self):
         return str( self.solicitude_code) + ': Expedida el ' + str( self.solicitude.expedition_date )
+
+class SolicitudeReport(Person):
+
+    STATUS_CHOICES = (
+        ('0', 'Alto'),
+        ('1', 'Medio'),
+        ('2', 'Bajo')
+    )
+
+    image = models.ImageField(
+        'Image', 
+        upload_to ='Reports', 
+    )
+
+    description = models.TextField('Description')
+
+    address  = models.TextField('Dirección')
+
+    # Foreignkey from 'Town' model
+    town = models.ForeignKey(
+        Town, 
+        on_delete = models.CASCADE
+    )
+
+    # Foreignkey from 'Solicitude' model
+    solicitude = models.ForeignKey(
+        Solicitude, 
+        on_delete = models.CASCADE
+    )
+
+    status = models.CharField(
+        'Nivel de Urgencia', 
+        max_length = 1,
+        choices = STATUS_CHOICES, 
+        blank = True
+    )
+
+    solicitude_code = models.CharField(
+        'Solicitud Code', 
+        max_length = 8,
+        default = '000000'
+    )
+
+    # Linking the Manager with the model 
+    objects = SolicitudeManager()
+
+    class Meta:
+        verbose_name = 'Register Report'
+        verbose_name_plural = 'Register Reports'
+
+    def __str__(self):
+        return str( self.solicitude_code) + ': Expedida el ' + str( self.solicitude.expedition_date )
+
+
+
 
 

@@ -12,6 +12,18 @@ class SectionForm(forms.ModelForm):
         queryset = Town.objects.all(),
         empty_label = "Selecciona una...",
     ) # ChoiceField bonded to Town model
+
+    address = forms.CharField(
+        required=True,
+        widget = forms.Textarea(
+            attrs={
+                'placeholder': 'Seleciona la ubicación de la sección en el mapa...',
+                'rows': '4',
+                'cols': '50',
+                'disabled': 'true', # Disable a field in the template ( HTML Document )
+            }
+        )
+    )
     
     # The fields that are not specified in this section won´t be registered in the Database
     class Meta:
@@ -21,6 +33,8 @@ class SectionForm(forms.ModelForm):
             'location_name',
             'location_type',
             'address',
+            'coords',
+            'image',
             'town'
         )
 

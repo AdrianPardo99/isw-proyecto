@@ -1,0 +1,88 @@
+{% extends "arbolado/base_arbolado.html" %}
+
+{% load  static %}
+
+{% block content %} 
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <!-- Foundation Block: 12 columns with margin between them -->
+        <div class="grid-x grid-margin-x">
+            <div class="cell large-8 large-offset-2 rectangle-green" style="margin-bottom: 30px;">
+                <p> {{ section.location_name }}  </p>
+            </div>
+            
+            <!-- Inicio Bloque Contenido 6 columnas -->
+            <div class="cell large-6 grid-margin-x">
+
+                <div class="cell grid-x grid-margin-x">
+                    <p class="cell large-2 font"> Dirección: </p>
+                    <p class="cell large-10 fontxt"> {{ section.address }}</p>
+                </div>
+                
+                <div class="cell grid-x grid-margin-x">
+                    <p class="cell large-2 font"> Ubicación: </p>
+                    <p class="cell large-10 fontxt"> {{ section.location_type.name }}</p>
+                </div>
+                
+                <div class="cell grid-x grid-margin-x">
+                    <p class="cell large-2 font"> Alcaldía: </p>
+                    <p class="cell large-10 fontxt"> {{ section.town.name }}</p>
+                </div>
+
+            </div>
+            <!-- Fin Bloque Contenido 6 columnas -->
+
+            <!-- Inicio Bloque Imagen 6 columnas -->
+            <div class="cell large-6">
+                <div class="card">
+                    <div class="card-section">
+                        <img src="{% static 'img/logo.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Fin Bloque Imagen 6 columnas -->
+            <h4 class="cell title"> Arbolado Registrado </h4>
+            <!-- Inicio Bloque de Tabla de Árboles -->
+            <div class="cell">
+                <table id="table-tree">
+                    <thead class="table-header-green">
+                      <tr>
+                        <th class="text-format"> Especie </th>
+                        <th class="text-format"> Cantidad </th>
+                        <th class="text-format"> Estado   </th>
+                        <th class="text-format"> Acción   </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbodyTable" style="text-align: center;">
+                        {% for tree in section.trees.all %}
+                        
+                        <div class="reveal" id="modal_{{tree.id}}" data-reveal>
+                            <p class="lead" style="text-align: center;"> {{ tree.species.name }} </p>
+                            <p class="text-modal-format"> Arboles Registrados: {{ tree.amount }} </p>
+                            <p class="text-modal-format"> Estado de Conservación: {{ tree.get_status_display }} </p>
+                            <p class="text-modal-format"> Descripción: {{ tree.description|safe }} </p>
+                            <p class="lead" style="text-align: center;"> Fotografía </p>
+                            <img src="{{ tree.image.url }}" style="border: 8px solid #81BDA4;">
+                            <button class="close-button" data-close aria-label="Close modal" type="button">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!-- Table Content -->
+                        <tr>
+                            <td class="text-format"> {{ tree.species.name }} </td>
+                            <td class="text-format"> {{ tree.amount }} </td>
+                            <td class="text-format"> {{ tree.get_status_display }} </td>
+                            <td class="text-format"> 
+                                <img src="{% static 'img/add.png' %}" data-open="modal_{{tree.id}}" height="25" width="25" style="cursor: pointer;">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+            <!-- Fin Bloque de Tabla de Árboles -->
+            
+        </div>
+    </div>
+{% endblock content %}

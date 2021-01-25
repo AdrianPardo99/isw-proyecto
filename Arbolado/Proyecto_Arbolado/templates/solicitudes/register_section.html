@@ -7,13 +7,16 @@
     {% include 'includes/header.html' %} 
     <!-- Init Grid Container -->
     <div class="grid-container ">
-        <div class="grid-x grid-margin-x">
-            <h3 class="cell title"> Registro de una Sección de Arbolado </h3>
+        <div class="grid-x grid-margin-x">           
             <!-- Foundation Block: 12 columns -->
             <!-- Inicio Bloque Datos Generales -->
             <form id="formSolicitud" method="POST" autocomplete="off" class="cell grid-x align-center"> {% csrf_token %}
+                <img src="{% static 'img/icons_add.png' %}" height="240px" width="140px" style="margin-bottom: 20px;">
+                <div class="cell">
+                    <h3 class="title"> Registro de una Sección de Arbolado </h3>
+                </div>
+
                 <h4 class="cell subtitle" style="text-align: center; margin-bottom: 15px;"> Datos Personales </h4>
-                
                 <div class="cell grid-x grid-margin-x">
                     <div class="cell small-1 large-offset-4">
                         <label class="text"> Nombre: </label>        
@@ -44,104 +47,162 @@
             </form>
             <!-- Fin Bloque Datos Generales -->
 
-            <!-- Inicio Bloque Ubicación -->
+            <!-- Inicio Bloque Ubicación de la Sección -->
             <form id="formSection" method="POST" autocomplete="off" class="cell large-6"> {% csrf_token %}
-                    <h4 class="cell subtitle"> Ubicación </h4>
-                    
-                    <div class="cell large-12">
+                    <h4 class="cell subtitle"> Datos de la Ubicación de la Sección: </h4>
+                    <div class="cell">
                         <label class="text"> Nombre de la Ubicación:
-                            {{ form_section.location }}
+                            {{ form_section.location_name }}
                         </label>
                     </div>
 
-                    <div class="cell large-12">
+                    <div class="cell">
+                        <label class="text"> Tipo de Ubicación:
+                            {{ form_section.location_type }}
+                        </label>
+                    </div>
+
+                    <div class="cell">
                         <label class="text"> Dirección:
                             {{ form_section.address }}
                         </label>
                     </div>
 
-                    <div class="cell large-12">
+                    <div class="cell">
+                        <label style="font-size: large;"> Fotografía de la Sección:
+                            {{ form_section.image }}
+                        </label>
+                    </div>
+
+                    <div class="cell">
                         <label class="text"> Alcaldía:
                             {{ form_section.town }}
                         </label>
                     </div>
             </form>
-            <!-- Fin Bloque Ubicación -->
+            <!-- Fin Bloque Ubicación de la Sección -->
 
-            <!-- Inicio Bloque Datos Árbol -->
-                <form id="formTree" method="POST" autocomplete="off" class="cell large-6"> {% csrf_token %}
-                        <h4 class="cell subtitle"> Agregar Árbol </h4>
+            <!-- Inicio Bloque del Mapa -->
+            <div class="cell large-6 grid-x">
+                <h4 class="cell subtitle"> Selecciona la Ubicación de la Sección: </h4>
+                <div class="cell" id="map" style="height: 500px; margin-top: 10px;"> </div>
+            </div>
+            <!-- Fin Bloque del Mapa -->
 
-                        <div class="cell large-12">
-                            <label class="text"> Nombre:
-                                {{ form_tree.name }}
-                            </label>
-                        </div>
-                        
-                        <div class="cell large-12">
-                            <label class="text"> Especie:
-                                {{ form_tree.species }}
-                            </label>
-                        </div>
-    
-                        <div class="cell large-12">
-                            <label class="text"> Descripción:
-                                {{ form_tree.description }}
-                            </label>
-                        </div>
-    
-                        <div class="cell large-12">
-                            <label class="text"> Fotografía: </label>
-                            {{ form_tree.image }}
-                        </div>
-    
-                        <div class="cell large-12">
-                            <label class="text"> Estado de Conservación: 
-                                {{ form_tree.status }}
-                            </label>
-                            
-                        </div>
-                        <!-- Foundation Block: 12 columns -->
-                        <div class="cell grid-x grid-margin-x">
-                            <div class="cell large-6">
-                                <label class="text"> Cantidad:
-                                    {{ form_tree.amount }}
-                                </label>
-                            </div>
-                            <div class="cell large-6" style="text-align: right;">
-                                <br>
-                                <img id="btnAddTree" height="40px" width="40px" style="cursor: pointer;" src="{% static 'img/add.png' %}">
-                            </div>
-                        </div>   
-                </form>
-            <!-- Fin Bloque Datos Árbol -->
+            <!-- Inicio Bloque Datos del Árbol -->
+            <form id="formTree" method="POST" autocomplete="off" class="cell"> {% csrf_token %}    
+
+                <div class="cell div-align-center title" style="margin-top: 25px;">
+                    <h3 style="font-weight: bold;"> Agregar Árbol a la Sección </h3>
+                </div>
+                
+                <div class="cell grid-x grid-margin-x">
+                    <div class="cell large-6">
+                        <label class="text"> Especie:
+                            {{ form_tree.species }}
+                        </label>
+                    </div>
+
+                    <div class="cell large-6">
+                        <label class="text"> Estado de Conservación: 
+                            {{ form_tree.status }}
+                        </label>
+                    </div>
+                </div>
+                    
+                <div class="cell grid-x grid-margin-x">
+                    <div class="cell large-6">
+                        <label class="text"> Fotografía: </label>
+                        {{ form_tree.image }}
+                    </div>
+
+                    <div class="cell large-6">
+                        <label class="text"> Descripción:
+                            {{ form_tree.description }}
+                        </label>
+                    </div>
+                </div>   
+
+                <!-- Foundation Block: 12 columns -->
+                <div class="cell grid-x grid-margin-x">
+                    <div class="cell large-4">
+                        <label class="text"> Cantidad:
+                            {{ form_tree.amount }}
+                        </label>
+                    </div>
+                    <div class="cell large-2" style="text-align: right;">
+                        <br>
+                        <img id="btnAddTree" height="40px" width="40px" style="cursor: pointer;" src="{% static 'img/add.png' %}">
+                    </div>
+                </div>   
+            </form>
+            <!-- Fin Bloque Datos del Árbol -->
+            
+            <!-- Inicio Bloque Tabla del Árbol -->
+            <div class="cell">
+                <table id="tableTree" style="margin-top: 20px;">
+                    <thead class="table-header-green">
+                      <tr>
+                        <th class="text-format"> Especie             </th>
+                        <th class="text-format"> Descripción         </th>
+                        <th class="text-format"> Estado Conservación </th>
+                        <th class="text-format"> Cantidad            </th>
+                        <th class="text-format"> Acción              </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbodyTable" style="text-align: center;">
+                    </tbody>
+                  </table>
+            </div>
+            <!-- Fin Bloque Tabla del Árbol -->
+            
+            <!-- Inicio Bloque Alert -->
+            <div class="cell grid-x align-center">
+                <div id="alert-box" style="text-align: center;"> </div>
+            </div>
+            <!-- Fin Bloque Alert -->
+            
+            <div class="cell" style="text-align: right;">
+                <button class="button search-button-green" id="btnEnviar"> Enviar Solicitud </button>
+            </div>
+
         </div>
-
-        <div class="cell">
-            <table id="table-tree" style="margin-top: 20px;">
-                <thead style="background: #81BDA4; color:azure;">
-                  <tr>
-                    <th style="text-align: center;"> Nombre      </th>
-                    <th style="text-align: center;"> Especie     </th>
-                    <th style="text-align: center;"> Descripción </th>
-                    <th style="text-align: center;"> Estado Conservación </th>
-                    <th style="text-align: center;"> Cantidad </th>
-                    <th style="text-align: center;"> Acción   </th>
-                  </tr>
-                </thead>
-                <tbody id="tbodyTable" style="text-align: center;">
-                </tbody>
-              </table>
-        </div>
-
-        <div class="cell" style="text-align: right;">
-            <button style="background-color: #81BDA4;" class="button" id="btnEnviar"> Enviar Solicitud </button>
-        </div>
-
     </div>
     <!-- End Grid Container -->
 
    <!-- {% include "includes/footer.html" %} -->
 
 {% endblock content %}
+    
+
+{% block js %}
+<script src="{% static 'js/arbolado.js' %}"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC18r_0L2Fq7WB_Ey6QcsHdcLb8F7VsrQg&callback=initMap&libraries=&v=weekly"
+  defer
+></script>
+
+<!-- Archivos JavaScript para la aplicación Solicitudes -->
+    <script>
+        /* Initializing the Map */
+        myModule.mapFunct();
+
+        document.querySelector('#btnAddTree').addEventListener('click', () => {
+            myModule.newTree();            
+        });
+
+        document.querySelector('#btnEnviar').addEventListener('click', () => {
+            myModule.newSection();            
+        });
+
+         /* This function receives the current row of a table */
+        const deleteRow = ( obj ) => {
+            /* img (child) -> td (1st parent)-> tr (2nd parent) */
+            let id_row  = obj.parentNode.parentNode.rowIndex;
+            let id_tree = obj.id;
+            myModule.deleteTree( id_row, id_tree);
+        }
+    </script>
+{% endblock js %}
     

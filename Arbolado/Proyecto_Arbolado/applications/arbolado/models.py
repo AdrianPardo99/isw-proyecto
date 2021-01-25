@@ -110,15 +110,18 @@ class Section(models.Model):
     )
 
     # Address provided by Google Maps
-    address = models.CharField(
-        'Address',
-         max_length = 120
-    )
+    address = models.TextField('Address')
 
     coords = models.CharField(
         'Coordinates',
-         max_length = 120,
+         max_length = 200,
          blank = True
+    )
+
+    image = models.ImageField(
+        'Image', 
+        upload_to ='Sections', 
+        null = True
     )
 
     # Foreignkey from 'Town' model

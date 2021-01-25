@@ -7,6 +7,7 @@ from django.views.generic import (
     CreateView,
     DeleteView,
     ListView,
+    DetailView,
 )
 # Django Models
 from .models import Section, Tree, Town, Location
@@ -24,6 +25,13 @@ class SectionCreateView(CreateView):
         # Sending the TreeForm to the HTML template
         context["form_tree"] = TreeForm
         return context
+
+    def form_invalid(self, form, **kwargs):
+        context = self.get_context_data(**kwargs)
+        print( f'Solicitud Enviada: {self.request.POST}')
+        context['form'] = form
+        print( f'Formulario inválido: { form.cleaned_data } ')
+        return self.render_to_response( context )
 
     def form_valid(self, form):
         if self.request.is_ajax():
@@ -108,8 +116,12 @@ class ListSectionsByTown(ListView):
         context = super(ListSectionsByTown, self).get_context_data(**kwargs)
         context['locations'] = Location.objects.all()
         return context
-    
 
+class SectionDetailView(DetailView):
+    template_name = 'arbolado/secion_detail.html'
+    model = Section
+    
+    
 
     
     

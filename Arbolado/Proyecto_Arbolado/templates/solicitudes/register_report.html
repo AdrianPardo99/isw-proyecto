@@ -1,0 +1,129 @@
+{% extends "solicitudes/base_solicitudes.html" %}
+
+{% load  static %}
+
+{% block content %}
+    {% include 'includes/header.html' %} 
+    
+    <div class="grid-container ">
+        <div class="grid-x grid-margin-x">
+            <div class=" cell div-align-center">
+                <img src="{% static 'img/icons_report.png' %}" height="240px" width="140px" style="margin-bottom: 20px;">
+            </div>
+            
+            <h3 class="cell title"> Formato de reporte de arbolado </h3>
+
+            <!-- Inicio Bloque Reporte -->
+            <form id="formReport" method="POST" autocomplete="off" class="cell grid-x grid-margin-x">{% csrf_token %}
+            <!-- Report Information Section -->
+            <div class="cell large-6">
+                <h4 class="cell subtitle"> Información del reporte </h4>
+                <div class="cell">
+                    <label class="text"> Descripción:
+                        {{ form.description }}
+                    </label>
+                </div>
+  
+                <div class="cell">
+                    <label class="text"> Fotografía: </label>
+                    {{ form.image }}
+                </div>
+  
+                <div class="cell">
+                  <label class="text"> Dirección:
+                    {{ form.address }}
+                  </label>
+                </div>
+  
+                <div class="cell">
+                    <label class="text"> Alcaldía:
+                        {{ form.town }}
+                    </label>
+                </div>
+                <div class="cell">
+                    <label class="text"> Nivel de urgencia:
+                        {{ form.status }}
+                    </label>
+                </div>
+            </div>
+            <!-- General Data Section -->
+            <div class="cell large-6">
+                
+                <h4 class="cell subtitle"> Datos Generales </h4>
+
+                <div class="cell grid-x grid-margin-x">
+                    <div class="cell small-12">
+                        <label class="text"> Nombre: </label>
+                    </div>
+                    <div class="cell small-12">
+                        {{ form.full_name }}
+                    </div>
+                </div>
+  
+                <div class="cell grid-x grid-margin-x">
+                    <div class="cell small-12" style="text-align: left;">
+                        <label class="text"> Email: </label>
+                    </div>
+                    <div class="cell small-12">
+                        {{ form.email }}
+                    </div>
+                </div>
+  
+                <div class="cell grid-x grid-margin-x">
+                    <div class="cell small-12" style="text-align: left;">
+                        <label class="text"> Edad: </label>
+                    </div>
+                    <div class="cell small-12">
+                        {{ form.age }}
+                    </div>
+                </div>
+
+                <!-- Inicio Bloque del Mapa -->
+                <div class="cell grid-x">
+                    <h4 class="cell subtitle"> Selecciona la Ubicación del Incidente: </h4>
+                    <div class="cell" id="map" style="height: 300px; margin-top: 10px;"> </div>
+                </div>
+            <!-- Fin Bloque del Mapa -->
+
+            </div>
+
+            <!-- Inicio Bloque Alert -->
+            <div class="cell grid-x align-center">
+                <div id="alert-box" style="text-align: center;"> </div>
+            </div>
+            <!-- Fin Bloque Alert -->
+
+            </form>
+
+            <div class="cell" style="text-align: right; margin-top: 150px;">
+                <button class="button search-button-green" id="btnEnviar"> Enviar Reporte </button>
+            </div>
+
+            <!-- Fin Bloque Reporte -->
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+{% block js %}
+
+<script src="{% static 'js/arbolado.js' %}"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC18r_0L2Fq7WB_Ey6QcsHdcLb8F7VsrQg&callback=initMap&libraries=&v=weekly"
+  defer
+></script>
+
+<script>
+    /* Initializing the Map */
+    myModule.mapFunct();
+
+    document.querySelector('#btnEnviar').addEventListener('click', () => {
+            myModule.newReport();            
+    });
+
+</script>
+
+{% endblock js %}
+    

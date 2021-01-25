@@ -7,26 +7,23 @@
           <li><a href="{% url 'arbolado_app:arbolado_alcaldias' %}"> Consultar Secciones Arbolado </a></li>
          </ul>
       </li>
-      <li><a href="#"> SOLICITUDES </a>
+      <li><a href="#"> ENVIAR UNA SOLICITUD </a>
         <ul class="menu vertical nested">
-          <li><a href="{% url 'solicitudes_app:solicitudes_registro' %}"> Solicitud Registro Arbolado  </a></li>
-          <li><a href="#"> Solicitud Registro Indicente </a></li>
+          <li><a href="{% url 'solicitudes_app:section_register' %}"> Solicitud Registro Arbolado  </a></li>
+          <li><a href="{% url 'solicitudes_app:trees_report' %}"> Solicitud Registro Indicente </a></li>
          </ul>
       </li>
-      <li><a href="#">CITIES</a>
+      <li><a href="#"> SEGUIMIENTO DE SOLICITUDES </a>
         <ul class="menu vertical nested">
-          <li><a href="#">London</a></li>
-          <li><a href="#">New York</a></li>
-          <li><a href="#">Paris</a></li>
+          <li><a href="{% url 'solicitudes_app:search_section_report' %}"> Registro Sección Arbolado </a></li>
+          <li><a href="{% url 'solicitudes_app:search_issues_report' %}"> Registro de Incidentes   </a></li>
          </ul>
       </li>
      </ul>
     <ul class="vertical menu">
-       <li><a href="#">Journal</a></li>
-       <li><a href="#">FAQ</a></li>
+       <li><a href="#"> Iniciar Sesión </a></li>
+       <li><a href="#">FAQ</a></li> 
        <li><a href="#">Terms & Conditions</a></li>
-       <li><a href="#">Careers</a></li>
-       <li><a href="#">Students</a></li>
     </ul>
     
   </div>

@@ -1,0 +1,92 @@
+{% extends "solicitudes/base_solicitudes.html" %}
+
+{% load  static %}
+
+{% block content %}
+    {% include 'includes/header.html' %} 
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <!-- Title -->
+            <div class="cell large-6 large-offset-3 rectangle-green">
+                <p> Seguimiento de Reportes </p>
+            </div>
+
+            <div class="cell div-align-center">
+                <p class="sub-title" style="margin-top: 20px;"> Ingresa el ID de tu solicitud: </p>
+            </div>
+
+            <form class="cell large-6 large-offset-3 input-group" method="GET"> {% csrf_token %}
+                <input class="text input-group-field" autocomplete="off" type="text" id="solicitud_id" name="solicitud_id" placeholder="Ingrese ID">
+                <div class="input-group-button">
+                  <input type="submit" class="button search-button-green" value="Buscar">
+                </div>
+            </form>
+
+            <!-- Table Content -->
+            <div class="cell" style="margin-top: 15px;">
+                <table id="sectionReportsTable">
+                    <thead class="table-header-green">
+                        <tr>
+                            <th class="text-format"> ID             </th>
+                            <th class="text-format"> Tipo Solicitud </th>
+                            <th class="text-format"> Fecha Emisión  </th>
+                            <th class="text-format"> Urgencia       </th>
+                            <th class="text-format"> Estado         </th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        {% for solicitud in solicitudes %}
+                            <tr>
+                                <td class="text-format"> {{ solicitud.solicitude_code }} </td>
+                                <td class="text-format"> {{ solicitud.solicitude.get_category_display }} </td>
+                                <td class="text-format"> {{ solicitud.solicitude.expedition_date }} </td>
+                                <td class="text-format"> {{ solicitud.get_status_display }} </td>
+                                {% if solicitud.solicitude.get_status_display == 'Pendiente' %}
+                                    <td class="text-format-p"> {{ solicitud.solicitude.get_status_display }} </td>
+                                {% else %}
+                                    <td class="text-format-a"> {{ solicitud.solicitude.get_status_display }} </td>    
+                                {% endif %} 
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination Block -->
+            <div class="cell">
+                <!-- If there's available pagination  -->
+                {% if is_paginated %}
+                <nav aria-label="Pagination">
+                    <ul class="pagination text-center">
+                     <!-- If there are previous pages -->
+                      {% if page_obj.has_previous %}
+                      <li class="pagination-previous"> 
+                        <a href="?page={{page_obj.previous_page_number}}" aria-label="Prev page"> Previous </a>
+                      </li> 
+                      {% endif %}
+                    <!-- Retrieving the pages array that the 'paginator' object has -->
+                      {% for page in paginator.page_range  %}
+                      <!-- If we're in the current page -->
+                      {% ifequal page page_obj.number %} 
+                      <!-- Highlighting the current page -->
+                      <li class="current" style="background-color: #81BDA4"> {{page}} </li>
+                      <!-- If we are not in the current page (another avaliable pages) -->
+                      {% else %}
+                      <li><a href="?page={{page}}" aria-label="Page"> {{page}} </a></li>
+                      {% endifequal %}
+                      {% endfor %}
+                      <!-- If exist next pages -->
+                      {% if page_obj.has_next %}
+                      <li class="pagination-next">
+                          <a href="?page={{page_obj.next_page_number}}" aria-label="Next page">Next</a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                  </nav>
+                  {% else %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

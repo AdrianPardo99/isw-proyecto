@@ -34,4 +34,11 @@ urlpatterns = [
         views.ListSectionsByTown.as_view(),
         name = 'arbolado_sections'
     ),
+
+    path(
+        'arbolado/alcaldias/section/detail/<int:pk>',
+        views.SectionDetailView.as_view(),
+        name = 'arbolado_section_detail'
+    ),
 ]
+

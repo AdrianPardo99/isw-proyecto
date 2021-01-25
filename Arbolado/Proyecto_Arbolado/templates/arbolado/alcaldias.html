@@ -8,16 +8,18 @@
     <div class="grid-container">
         <!-- Foundation Block: 12 columns with margin between them -->
         <div class="grid-x grid-margin-y grid-margin-x">
-            <h3 class="cell title"> Secciones de Arbolado por Alcaldías </h3>
+           <div class="cell rectangle-green">
+             <p> Secciones de Arbolado por Alcaldía </p>
+           </div>
+           
             {% for town in towns  %}
-            <div class="cell large-4 container">
-                    <img class="image" src="{{ town.image.url }}">
-                <div class="overlay">
-                  <div class="txt">
-                    <a href="{% url 'arbolado_app:arbolado_sections' town.name %}" style="color: white;"> {{ town.name }} </a>
-                  </div>
-                </div>
-              </div>
+            <div class="cell large-4 image-hover-wrapper">
+              <a href="{% url 'arbolado_app:arbolado_sections' town.name %}"> <img src="{{ town.image.url }}">
+                <span class="image-hover-wrapper-reveal">
+                  <p> {{ town.name }} </p>
+                </span>
+              </a>
+            </div>
             {% endfor %}
         </div>
     </div>
